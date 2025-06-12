@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.iafenvoy.dsiafi.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "dragon_survival_iaf_integration.refmap.json",
+  "mixins": [
+    "DragonArmorRenderLayerMixin",
+    "DragonBreathTargetMixin",
+    "EntityDragonBaseMixin",
+    "ItemDragonArmorMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

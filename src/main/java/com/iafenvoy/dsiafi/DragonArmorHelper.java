@@ -1,0 +1,63 @@
+package com.iafenvoy.dsiafi;
+
+import com.iafenvoy.iceandfire.registry.IafItems;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class DragonArmorHelper {
+    private static final Map<Item, Item> DRAGON_TO_ARMOR = new HashMap<>();
+
+    public static Item transform(Item item) {
+        return DRAGON_TO_ARMOR.getOrDefault(item, item);
+    }
+
+    static {
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_COPPER_HEAD.get(), IafItems.COPPER_HELMET.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_COPPER_NECK.get(), IafItems.COPPER_CHESTPLATE.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_COPPER_BODY.get(), IafItems.COPPER_LEGGINGS.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_COPPER_TAIL.get(), IafItems.COPPER_BOOTS.get());
+
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_SILVER_HEAD.get(), IafItems.SILVER_HELMET.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_SILVER_NECK.get(), IafItems.SILVER_CHESTPLATE.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_SILVER_BODY.get(), IafItems.SILVER_LEGGINGS.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_SILVER_TAIL.get(), IafItems.SILVER_BOOTS.get());
+
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_IRON_HEAD.get(), Items.IRON_HELMET);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_IRON_NECK.get(), Items.IRON_CHESTPLATE);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_IRON_BODY.get(), Items.IRON_LEGGINGS);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_IRON_TAIL.get(), Items.IRON_BOOTS);
+
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_GOLD_HEAD.get(), Items.GOLDEN_HELMET);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_GOLD_NECK.get(), Items.GOLDEN_CHESTPLATE);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_GOLD_BODY.get(), Items.GOLDEN_LEGGINGS);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_GOLD_TAIL.get(), Items.GOLDEN_BOOTS);
+
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DIAMOND_HEAD.get(), Items.DIAMOND_HELMET);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DIAMOND_NECK.get(), Items.DIAMOND_CHESTPLATE);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DIAMOND_BODY.get(), Items.DIAMOND_LEGGINGS);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DIAMOND_TAIL.get(), Items.DIAMOND_BOOTS);
+
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_NETHERITE_HEAD.get(), Items.NETHERITE_HELMET);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_NETHERITE_NECK.get(), Items.NETHERITE_CHESTPLATE);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_NETHERITE_BODY.get(), Items.NETHERITE_LEGGINGS);
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_NETHERITE_TAIL.get(), Items.NETHERITE_BOOTS);
+
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_FIRE_HEAD.get(), IafItems.DRAGONSTEEL_FIRE_HELMET.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_FIRE_NECK.get(), IafItems.DRAGONSTEEL_FIRE_CHESTPLATE.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_FIRE_BODY.get(), IafItems.DRAGONSTEEL_FIRE_LEGGINGS.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_FIRE_TAIL.get(), IafItems.DRAGONSTEEL_FIRE_BOOTS.get());
+
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_ICE_HEAD.get(), IafItems.DRAGONSTEEL_ICE_HELMET.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_ICE_NECK.get(), IafItems.DRAGONSTEEL_ICE_CHESTPLATE.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_ICE_BODY.get(), IafItems.DRAGONSTEEL_ICE_LEGGINGS.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_ICE_TAIL.get(), IafItems.DRAGONSTEEL_ICE_BOOTS.get());
+
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_LIGHTNING_HEAD.get(), IafItems.DRAGONSTEEL_LIGHTNING_HELMET.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_LIGHTNING_NECK.get(), IafItems.DRAGONSTEEL_LIGHTNING_CHESTPLATE.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_LIGHTNING_BODY.get(), IafItems.DRAGONSTEEL_LIGHTNING_LEGGINGS.get());
+        DRAGON_TO_ARMOR.put(IafItems.DRAGONARMOR_DRAGONSTEEL_LIGHTNING_TAIL.get(), IafItems.DRAGONSTEEL_LIGHTNING_BOOTS.get());
+    }
+}
