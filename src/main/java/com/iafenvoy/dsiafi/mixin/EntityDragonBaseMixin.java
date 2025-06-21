@@ -1,6 +1,7 @@
 package com.iafenvoy.dsiafi.mixin;
 
 import by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateProvider;
+import com.iafenvoy.iceandfire.config.IafCommonConfig;
 import com.iafenvoy.iceandfire.entity.EntityDragonBase;
 import com.iafenvoy.iceandfire.entity.ai.DragonAITarget;
 import com.iafenvoy.iceandfire.entity.ai.DragonAITargetNonTamed;
@@ -37,13 +38,14 @@ public abstract class EntityDragonBaseMixin extends TamableAnimal {
 
         this.targetSelector.removeAllGoals(g -> g instanceof DragonAITargetNonTamed);
         this.targetSelector.addGoal(5, new DragonAITargetNonTamed<>(self, LivingEntity.class, false, (entity) -> {
-            if (entity instanceof Player player) return !player.isCreative() && !DragonStateProvider.isDragon(player);
+            if (entity instanceof Player player)
+                return !player.isCreative() && !IafCommonConfig.INSTANCE.dragon.neutralToPlayer.getValue() && !DragonStateProvider.isDragon(player);
             else if (this.getRandom().nextInt(100) <= this.getHunger()) return false;
             else
                 return entity.getType() != this.getType() && DragonUtils.canHostilesTarget(entity) && DragonUtils.isAlive(entity) && this.shouldTarget(entity);
         }));
 
         this.targetSelector.removeAllGoals(g -> g instanceof DragonAITarget);
-        this.targetSelector.addGoal(6, new DragonAITarget<>(self, LivingEntity.class, true, (entity) -> (!(entity instanceof Player player) || (!player.isCreative() && !DragonStateProvider.isDragon(player))) && DragonUtils.canHostilesTarget(entity) && entity.getType() != this.getType() && this.shouldTarget(entity) && DragonUtils.isAlive(entity)));
+        this.targetSelector.addGoal(6, new DragonAITarget<>(self, LivingEntity.class, true, (entity) -> (!(entity instanceof Player player) || (!player.isCreative() && (entity instanceof Player ? !IafCommonConfig.INSTANCE.dragon.neutralToPlayer.getValue() : !DragonStateProvider.isDragon(player))) && DragonUtils.canHostilesTarget(entity) && entity.getType() != this.getType() && this.shouldTarget(entity) && DragonUtils.isAlive(entity))));
     }
 }

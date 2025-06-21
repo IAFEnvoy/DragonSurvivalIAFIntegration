@@ -109,7 +109,7 @@ dependencies {
     implementation "curse.maven:architectury-api-419699:5786327"
     implementation "curse.maven:uranus-1010827:6552770"
     implementation "curse.maven:jupiter-1072905:6539293"
-    implementation "curse.maven:iceandfire-ce-1040076:6551954"
+    implementation "curse.maven:iceandfire-ce-1040076:6677796"
 
     implementation "curse.maven:geckolib-388172:6304958"
     implementation "curse.maven:dragons-survival-420799:6640524"
