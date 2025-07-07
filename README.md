@@ -9,4 +9,13 @@ and [Ice And Fire Community Edition](https://www.curseforge.com/minecraft/mc-mod
 
 - You can use your dragon breath to activate dragon forges.
 - Dragons will be neutral before your attack.
-- Dragon armor can be wear on yourself.
+- Dragon armor can be wear on yourself with enchantments and adjustable armor protection. (Configure in `./config/dsiafi.json`)
+
+```json5
+//dsiafi.json
+{
+  //Item : Value
+  //Example
+  "iceandfire:dragonarmor_silver_body": 100
+}
+```

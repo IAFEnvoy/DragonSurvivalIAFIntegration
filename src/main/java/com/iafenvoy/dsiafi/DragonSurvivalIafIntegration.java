@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 @Mod(DragonSurvivalIafIntegration.MOD_ID)
 public class DragonSurvivalIafIntegration {
     public static final String MOD_ID = "dragon_survival_iaf_integration";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public DragonSurvivalIafIntegration(IEventBus bus, ModContainer container) {
     }
