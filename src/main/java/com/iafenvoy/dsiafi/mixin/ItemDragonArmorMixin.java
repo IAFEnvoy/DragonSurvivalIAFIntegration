@@ -4,7 +4,7 @@ import by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateProvide
 import com.iafenvoy.dsiafi.DragonArmorHelper;
 import com.iafenvoy.dsiafi.config.ArmorPointConfig;
 import com.iafenvoy.iceandfire.data.DragonArmorPart;
-import com.iafenvoy.iceandfire.item.ItemDragonArmor;
+import com.iafenvoy.iceandfire.item.DragonArmorItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -27,7 +27,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.Arrays;
 
 @Pseudo
-@Mixin(ItemDragonArmor.class)
+@Mixin(DragonArmorItem.class)
 public class ItemDragonArmorMixin extends Item implements Equipable {
     @Shadow
     @Final
@@ -44,7 +44,7 @@ public class ItemDragonArmorMixin extends Item implements Equipable {
 
     @Override
     public @NotNull ItemAttributeModifiers getDefaultAttributeModifiers(@NotNull ItemStack stack) {
-        ItemDragonArmor self = (ItemDragonArmor) (Object) this;
+        DragonArmorItem self = (DragonArmorItem) (Object) this;
         Item transformed = DragonArmorHelper.transform(self);
         int armor = ArmorPointConfig.get(self);
         ItemAttributeModifiers modifiers = transformed.getDefaultAttributeModifiers(stack.transmuteCopy(transformed));
@@ -65,7 +65,7 @@ public class ItemDragonArmorMixin extends Item implements Equipable {
 
     @Override
     public int getEnchantmentValue(ItemStack stack) {
-        Item transformed = DragonArmorHelper.transform((ItemDragonArmor) (Object) this);
+        Item transformed = DragonArmorHelper.transform((DragonArmorItem) (Object) this);
         return transformed.getEnchantmentValue(stack.transmuteCopy(transformed));
     }
 

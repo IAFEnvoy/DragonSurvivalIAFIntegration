@@ -107,12 +107,12 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
     implementation "curse.maven:architectury-api-419699:5786327"
-    implementation "curse.maven:uranus-1010827:6552770"
-    implementation "curse.maven:jupiter-1072905:6539293"
-    implementation "curse.maven:iceandfire-ce-1040076:6677796"
+    implementation "curse.maven:uranus-1010827:6919185"
+    implementation "curse.maven:jupiter-1072905:6843052"
+    implementation "curse.maven:iceandfire-ce-1040076:6947928"
 
-    implementation "curse.maven:geckolib-388172:6304958"
-    implementation "curse.maven:dragons-survival-420799:6640524"
+    implementation "curse.maven:geckolib-388172:6920810"
+    implementation "curse.maven:dragons-survival-420799:6847071"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

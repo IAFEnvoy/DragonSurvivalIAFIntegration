@@ -2,9 +2,9 @@ package com.iafenvoy.dsiafi.mixin;
 
 import by.dragonsurvivalteam.dragonsurvival.common.capability.DragonStateProvider;
 import com.iafenvoy.iceandfire.config.IafCommonConfig;
-import com.iafenvoy.iceandfire.entity.EntityDragonBase;
-import com.iafenvoy.iceandfire.entity.ai.DragonAITarget;
-import com.iafenvoy.iceandfire.entity.ai.DragonAITargetNonTamed;
+import com.iafenvoy.iceandfire.entity.DragonBaseEntity;
+import com.iafenvoy.iceandfire.entity.ai.DragonAITargetGoal;
+import com.iafenvoy.iceandfire.entity.ai.DragonAITargetNonTamedGoal;
 import com.iafenvoy.iceandfire.entity.util.dragon.DragonUtils;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Pseudo
-@Mixin(EntityDragonBase.class)
+@Mixin(DragonBaseEntity.class)
 public abstract class EntityDragonBaseMixin extends TamableAnimal {
     @Shadow
     protected abstract boolean shouldTarget(Entity entity);
@@ -34,10 +34,10 @@ public abstract class EntityDragonBaseMixin extends TamableAnimal {
 
     @Inject(method = "registerGoals", at = @At("RETURN"))
     private void handleTarget(CallbackInfo ci) {
-        EntityDragonBase self = (EntityDragonBase) (Object) this;
+        DragonBaseEntity self = (DragonBaseEntity) (Object) this;
 
-        this.targetSelector.removeAllGoals(g -> g instanceof DragonAITargetNonTamed);
-        this.targetSelector.addGoal(5, new DragonAITargetNonTamed<>(self, LivingEntity.class, false, (entity) -> {
+        this.targetSelector.removeAllGoals(g -> g instanceof DragonAITargetNonTamedGoal<?>);
+        this.targetSelector.addGoal(5, new DragonAITargetNonTamedGoal<>(self, LivingEntity.class, false, (entity) -> {
             if (entity instanceof Player player)
                 return !player.isCreative() && !IafCommonConfig.INSTANCE.dragon.neutralToPlayer.getValue() && !DragonStateProvider.isDragon(player);
             else if (this.getRandom().nextInt(100) <= this.getHunger()) return false;
@@ -45,7 +45,7 @@ public abstract class EntityDragonBaseMixin extends TamableAnimal {
                 return entity.getType() != this.getType() && DragonUtils.canHostilesTarget(entity) && DragonUtils.isAlive(entity) && this.shouldTarget(entity);
         }));
 
-        this.targetSelector.removeAllGoals(g -> g instanceof DragonAITarget);
-        this.targetSelector.addGoal(6, new DragonAITarget<>(self, LivingEntity.class, true, (entity) -> (!(entity instanceof Player player) || (!player.isCreative() && (entity instanceof Player ? !IafCommonConfig.INSTANCE.dragon.neutralToPlayer.getValue() : !DragonStateProvider.isDragon(player))) && DragonUtils.canHostilesTarget(entity) && entity.getType() != this.getType() && this.shouldTarget(entity) && DragonUtils.isAlive(entity))));
+        this.targetSelector.removeAllGoals(g -> g instanceof DragonAITargetGoal<?>);
+        this.targetSelector.addGoal(6, new DragonAITargetGoal<>(self, LivingEntity.class, true, (entity) -> (!(entity instanceof Player player) || (!player.isCreative() && (entity instanceof Player ? !IafCommonConfig.INSTANCE.dragon.neutralToPlayer.getValue() : !DragonStateProvider.isDragon(player))) && DragonUtils.canHostilesTarget(entity) && entity.getType() != this.getType() && this.shouldTarget(entity) && DragonUtils.isAlive(entity))));
     }
 }
