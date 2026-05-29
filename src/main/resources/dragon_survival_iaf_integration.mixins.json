@@ -7,8 +7,8 @@
   "mixins": [
     "DragonArmorRenderLayerMixin",
     "DragonBreathTargetMixin",
-    "EntityDragonBaseMixin",
-    "ItemDragonArmorMixin"
+    "DragonBaseEntityMixin",
+    "DragonArmorItemMixin"
   ],
   "client": [
   ],

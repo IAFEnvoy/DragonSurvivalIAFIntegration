@@ -3,6 +3,7 @@ package com.iafenvoy.dsiafi.mixin;
 import by.dragonsurvivalteam.dragonsurvival.registry.dragon.ability.DragonAbilityInstance;
 import by.dragonsurvivalteam.dragonsurvival.registry.dragon.ability.targeting.DragonBreathTarget;
 import com.iafenvoy.iceandfire.item.block.entity.DragonForgeInputBlockEntity;
+import com.iafenvoy.iceandfire.registry.IafAttributes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.phys.BlockHitResult;
@@ -18,9 +19,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class DragonBreathTargetMixin {
     @Inject(method = "apply", at = @At("HEAD"))
     private void handleDragonForgeTick(ServerPlayer dragon, DragonAbilityInstance ability, CallbackInfo ci) {
-        ServerLevel level = dragon.serverLevel();
         HitResult result = dragon.pick(10, 0, false);
-        if (result instanceof BlockHitResult blockHitResult && level.getBlockEntity(blockHitResult.getBlockPos()) instanceof DragonForgeInputBlockEntity dragonForgeInput)
-            dragonForgeInput.onHitWithFlame();
+        if (result instanceof BlockHitResult blockHitResult && dragon.serverLevel().getBlockEntity(blockHitResult.getBlockPos()) instanceof DragonForgeInputBlockEntity dragonForgeInput)
+            dragonForgeInput.onHitWithFlame(dragon.getAttributeValue(IafAttributes.DRAGON_FORGE_SPEED));
     }
 }

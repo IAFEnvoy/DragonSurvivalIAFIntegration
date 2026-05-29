@@ -28,12 +28,12 @@ import java.util.Arrays;
 
 @Pseudo
 @Mixin(DragonArmorItem.class)
-public class ItemDragonArmorMixin extends Item implements Equipable {
+public class DragonArmorItemMixin extends Item implements Equipable {
     @Shadow
     @Final
     public DragonArmorPart dragonSlot;
 
-    public ItemDragonArmorMixin(Properties properties) {
+    public DragonArmorItemMixin(Properties properties) {
         super(properties);
     }
 

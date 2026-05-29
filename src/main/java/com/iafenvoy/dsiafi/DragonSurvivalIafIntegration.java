@@ -15,14 +15,7 @@ import net.neoforged.neoforge.registries.RegisterEvent;
 import org.slf4j.Logger;
 
 @Mod(DragonSurvivalIafIntegration.MOD_ID)
-@EventBusSubscriber
 public class DragonSurvivalIafIntegration {
     public static final String MOD_ID = "dragon_survival_iaf_integration";
     public static final Logger LOGGER = LogUtils.getLogger();
-
-    @SubscribeEvent
-    public static void registerItem(RegisterEvent event) {
-        if (event.getRegistryKey() == Registries.ITEM)
-            event.register(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "golden_pork"), () -> new Item(new Item.Properties().food(Foods.COOKED_PORKCHOP)));
-    }
 }

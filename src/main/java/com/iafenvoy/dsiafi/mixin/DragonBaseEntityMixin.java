@@ -21,14 +21,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Pseudo
 @Mixin(DragonBaseEntity.class)
-public abstract class EntityDragonBaseMixin extends TamableAnimal {
+public abstract class DragonBaseEntityMixin extends TamableAnimal {
     @Shadow
     protected abstract boolean shouldTarget(Entity entity);
 
     @Shadow
     public abstract int getHunger();
 
-    protected EntityDragonBaseMixin(EntityType<? extends TamableAnimal> entityType, Level level) {
+    protected DragonBaseEntityMixin(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
     }
 
