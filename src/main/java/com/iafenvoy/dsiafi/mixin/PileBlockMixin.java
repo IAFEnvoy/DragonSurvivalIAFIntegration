@@ -75,8 +75,8 @@ public class PileBlockMixin extends Block {
             return;
         }
 
-        // Dragon sleep: only if standing on the block (same as TreasureBlock behavior)
-        if (DragonStateProvider.isDragon(player) && player.getBlockStateOn().getBlock() == state.getBlock()) {
+        // Dragon sleep: PileBlock layer 1 has empty collision, so standing-on check can fail
+        if (DragonStateProvider.isDragon(player)) {
             TreasureRestData treasureData = TreasureRestData.getData(player);
             treasureData.setResting(true);
 
